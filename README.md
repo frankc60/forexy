@@ -1,0 +1,2 @@
+# forexy
+NodeJS Forex results
