@@ -59,25 +59,81 @@ currencyCheck
 Forexy also has a host of Events that you can use through the lifecycle process.
 
 ```javascript
+const currencyCheck = new Forexy();
 
+//On Events
+currencyCheck.on("request", (data) => {
+  //called before the request is made, returns the currency pair
+  console.log("on request:" + data);
+});
+
+currencyCheck.on("received", (data) => {
+  console.log("on received: " + data);
+});
+
+currencyCheck.on("stream", (data) => {
+  //streamed data
+  console.log("on stream: " + data);
+});
+
+currencyCheck.on("statusCode", (data) => {
+  //If no errors should return '200'
+  console.log("on statusCode:" + data);
+});
+
+currencyCheck.on("rate", (data) => {
+  //rate is the default value returned the get() method
+  console.log("on rate:" + data);
+});
+
+currencyCheck
+  .get("USDGBP")
+  .then((result) => {
+    console.log(`USD-GBP rate is ${result}`);
+  })
+  .catch((err) => {
+    console.error(`Error: ${err}`);
+  });
 ```
 
 Check out the examples to see various options used.
 
 ### Events
 
-#### on request
-
-#### statusCode
-
-#### stream
-
 #### fulldata
 
-#### pair
+Get a JSON object with all data.
+
+```javascript
+currencyCheck.on("fulldata", (data) => {
+  //returned JSON of all data.
+  console.log("on fulldata:" + JSON.stringify(data));
+});
+```
 
 #### timestamp
 
 This returns a Date object, which can be further manipulated, this will be approximately the current timestamp.
 
-## Examples
+```javascript
+currencyCheck.on("timestamp", (data) => {
+  //This returns a Date object.
+  console.log("on timestamp:" + data); //Tues Dec 08 2021 20:51:10 GMT
+});
+```
+
+#### pair
+
+Returns the currency pair values, in uppercase.
+
+```javascript
+currencyCheck.on("pair", (data) => {
+  console.log("on pair:" + data); //USDGBP
+});
+```
+
+#### statusCode
+
+#### stream
+
+#### pair
