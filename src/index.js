@@ -15,8 +15,8 @@ class Ee {
 }
 
 class Forexy extends Ee {
-  static #url = "https://www.freeforexapi.com/api/live";
-  #data2 = "hello";
+  static _url = "https://www.freeforexapi.com/api/live";
+
   constructor(params) {
     super();
     this.data = params;
@@ -63,7 +63,7 @@ class Forexy extends Ee {
         }, 1000);
       } else {
         https
-          .get(`${Forexy.#url}?pairs=${d}`, (res) => {
+          .get(`${Forexy._url}?pairs=${d}`, (res) => {
             let data = "";
             this.emit("statusCode", res.statusCode);
             this.emit("headers", res.headers);
