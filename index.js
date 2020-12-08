@@ -20,7 +20,7 @@ class Forexy extends Ee {
   constructor(params) {
     super();
     this.data = params;
-    this.mockData = false;
+    this.mockData = params.mock;
   }
   get(pairs) {
     const uPairs = pairs.toUpperCase();
@@ -37,13 +37,28 @@ class Forexy extends Ee {
   _retrieveData(d) {
     return new Promise((resolve, reject) => {
       if (this.mockData) {
-        this.emit("received", "header status>43334,etc");
-        this.emit("fulldata", [
-          { pair: "usbgbp" },
-          { price: 1.223 },
-          { date: 1222212112 },
-        ]);
-        resolve(1.223);
+        this.emit("headers", {
+          date: "Tue, 08 Dec 2020 07:58:34 GMT",
+          "content-type": "text/html; charset=UTF-8",
+          "transfer-encoding": "chunked",
+          connection: "close",
+          "set-cookie": [
+            "__cfduid=d830149f8dcf; expires=Thu, 07-Jan-21 07:58:34 GMT; path=/; domain=.google.com; HttpOnly; SameSite=Lax",
+          ],
+          vary: "Accept-Encoding",
+          "cf-cache-status": "DYNAMIC",
+          nel: '{"report_to":"cf-nel","max_age":604800}',
+        });
+        this.emit("fulldata", {
+          rates: { [d]: { rate: 15.140088, timestamp: 1607414291 } },
+          code: 200,
+        });
+        this.emit("statusCode", 200);
+        this.emit("stream", "stream data...");
+        this.emit("pair", d);
+        this.emit("timestamp", new Date());
+        this.emit("rate", 1.2233);
+        setTimeout(resolve, 1000, 1.2233);
       } else {
         https
           .get(`${Forexy.#url}?pairs=${d}`, (res) => {
@@ -90,15 +105,19 @@ class Forexy extends Ee {
 }
 
 //--------------------------------------------------------------------------------------------
-let a = new Forexy({ options: "dd" });
+let a = new Forexy({ mock: false });
 
 a.on("request", (x) => {
   console.log("on request:" + x);
 });
 
-a.on("received", (x) => {
-  console.log("on received: " + x);
-});
+a.get("usdLsl")
+  .then((d) => {
+    console.log("gbpusd> " + d);
+  })
+  .catch((e) => {
+    console.error("error1:" + e);
+  });
 
 a.on("fulldata", (d) => {
   console.log("on fulldata:" + JSON.stringify(d));
@@ -123,14 +142,6 @@ a.on("rate", (d) => {
 a.on("pair", (d) => {
   console.log("on pair:" + d);
 });
-
-a.get("usdLsl")
-  .then((d) => {
-    console.log("gbpusd> " + d);
-  })
-  .catch((e) => {
-    console.error("error1:" + e);
-  });
 
 /* tring USDGBP (exists) get:
   received all data:{"rates":{"USDGBP":{"rate":0.748885,"timestamp":1607405286}},"code":200}
