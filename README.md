@@ -1,13 +1,13 @@
 # forexy
 
-A 'no dependency', light-weight fast node.js tool to retrieve the latest up to date Forex Currency pair results.
+A 'zero dependency', light-weight fast node.js tool to retrieve the latest Forex Currency pair results.
 
 ## Installation
 
-Install with npm
+Using npm:
 
 ```shell
-$ npm install forexy
+$ npm i --save forexy
 ```
 
 ## Usage and Examples
@@ -62,29 +62,6 @@ Forexy also has a host of Events that you can use through the lifecycle process.
 const currencyCheck = new Forexy();
 
 //On Events
-currencyCheck.on("request", (data) => {
-  //called before the request is made, returns the currency pair
-  console.log("on request:" + data);
-});
-
-currencyCheck.on("received", (data) => {
-  console.log("on received: " + data);
-});
-
-currencyCheck.on("stream", (data) => {
-  //streamed data
-  console.log("on stream: " + data);
-});
-
-currencyCheck.on("statusCode", (data) => {
-  //If no errors should return '200'
-  console.log("on statusCode:" + data);
-});
-
-currencyCheck.on("rate", (data) => {
-  //rate is the default value returned the get() method
-  console.log("on rate:" + data);
-});
 
 currencyCheck
   .get("USDGBP")
@@ -108,6 +85,7 @@ Get a JSON object with all data.
 currencyCheck.on("fulldata", (data) => {
   //returned JSON of all data.
   console.log("on fulldata:" + JSON.stringify(data));
+  //eg. {"rates":{"USDLSL":{"rate":15.140088,"timestamp":1607414291}},"code":200}
 });
 ```
 
@@ -134,6 +112,42 @@ currencyCheck.on("pair", (data) => {
 
 #### statusCode
 
+```javascript
+currencyCheck.on("statusCode", (data) => {
+  //If no errors should return '200'
+  console.log("on statusCode:" + data);
+});
+```
+
+#### rate
+
+_rate_ is the same as the default value returned from the get() method.
+
+```javascript
+currencyCheck.on("rate", (data) => {
+  console.log("on rate:" + data);
+  //eg. 1.2234
+});
+```
+
+#### request
+
+Triggered before the request is made. Returns the currency pair value.
+
+```javascript
+currencyCheck.on("request", (data) => {
+  //called before the request is made, returns the currency pair
+  console.log("on request:" + data);
+});
+```
+
 #### stream
 
-#### pair
+The same returned data as 'fulldata' but streamed.
+
+```javascript
+currencyCheck.on("stream", (data) => {
+  //streamed data
+  console.log("on stream: " + data);
+});
+```
