@@ -105,30 +105,22 @@ class Forexy extends Ee {
 }
 
 //--------------------------------------------------------------------------------------------
-let a = new Forexy({ mock: false });
+let a = new Forexy({ mock: true });
+
+a.on("statusCode", (d) => {
+  console.log("on statusCode:" + d);
+});
 
 a.on("request", (x) => {
   console.log("on request:" + x);
 });
-
-a.get("usdLsl")
-  .then((d) => {
-    console.log("gbpusd> " + d);
-  })
-  .catch((e) => {
-    console.error("error1:" + e);
-  });
 
 a.on("fulldata", (d) => {
   console.log("on fulldata:" + JSON.stringify(d));
 });
 
 a.on("stream", (d) => {
-  console.log("on steam: " + d);
-});
-
-a.on("statusCode", (d) => {
-  console.log("on statusCode:" + d);
+  console.log("on stream: " + d);
 });
 
 a.on("timestamp", (d) => {
@@ -142,6 +134,14 @@ a.on("rate", (d) => {
 a.on("pair", (d) => {
   console.log("on pair:" + d);
 });
+
+a.get("usdLsl")
+  .then((d) => {
+    console.log("gbpusd> " + d);
+  })
+  .catch((e) => {
+    console.error("error1:" + e);
+  });
 
 /* tring USDGBP (exists) get:
   received all data:{"rates":{"USDGBP":{"rate":0.748885,"timestamp":1607405286}},"code":200}
