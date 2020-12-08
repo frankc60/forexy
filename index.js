@@ -37,28 +37,30 @@ class Forexy extends Ee {
   _retrieveData(d) {
     return new Promise((resolve, reject) => {
       if (this.mockData) {
-        this.emit("headers", {
-          date: "Tue, 08 Dec 2020 07:58:34 GMT",
-          "content-type": "text/html; charset=UTF-8",
-          "transfer-encoding": "chunked",
-          connection: "close",
-          "set-cookie": [
-            "__cfduid=d830149f8dcf; expires=Thu, 07-Jan-21 07:58:34 GMT; path=/; domain=.google.com; HttpOnly; SameSite=Lax",
-          ],
-          vary: "Accept-Encoding",
-          "cf-cache-status": "DYNAMIC",
-          nel: '{"report_to":"cf-nel","max_age":604800}',
-        });
-        this.emit("fulldata", {
-          rates: { [d]: { rate: 15.140088, timestamp: 1607414291 } },
-          code: 200,
-        });
-        this.emit("statusCode", 200);
-        this.emit("stream", "stream data...");
-        this.emit("pair", d);
-        this.emit("timestamp", new Date());
-        this.emit("rate", 1.2233);
-        setTimeout(resolve, 1000, 1.2233);
+        setTimeout(() => {
+          this.emit("headers", {
+            date: "Tue, 08 Dec 2020 07:58:34 GMT",
+            "content-type": "text/html; charset=UTF-8",
+            "transfer-encoding": "chunked",
+            connection: "close",
+            "set-cookie": [
+              "__cfduid=d830149f8dcf; expires=Thu, 07-Jan-21 07:58:34 GMT; path=/; domain=.google.com; HttpOnly; SameSite=Lax",
+            ],
+            vary: "Accept-Encoding",
+            "cf-cache-status": "DYNAMIC",
+            nel: '{"report_to":"cf-nel","max_age":604800}',
+          });
+          this.emit("fulldata", {
+            rates: { [d]: { rate: 15.140088, timestamp: 1607414291 } },
+            code: 200,
+          });
+          this.emit("statusCode", 200);
+          this.emit("stream", "stream data...");
+          this.emit("pair", d);
+          this.emit("timestamp", new Date());
+          this.emit("rate", 1.2233);
+          resolve(1.2233);
+        }, 1000);
       } else {
         https
           .get(`${Forexy.#url}?pairs=${d}`, (res) => {
@@ -105,7 +107,7 @@ class Forexy extends Ee {
 }
 
 //--------------------------------------------------------------------------------------------
-let a = new Forexy({ mock: true });
+let a = new Forexy({ mock: false });
 
 a.on("statusCode", (d) => {
   console.log("on statusCode:" + d);
@@ -135,7 +137,7 @@ a.on("pair", (d) => {
   console.log("on pair:" + d);
 });
 
-a.get("usdLsl")
+a.get("usdgbp")
   .then((d) => {
     console.log("gbpusd> " + d);
   })

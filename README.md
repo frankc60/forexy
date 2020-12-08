@@ -136,3 +136,41 @@ currencyCheck.on("stream", (data) => {
   console.log("on stream: " + data);
 });
 ```
+
+## Error Handling
+
+Forexy has built in Error Handling, which will catch any issues in Development.
+
+### Unsupported Forex Pairs
+
+Forexy currently only offers the most popular currency pairs. I plan to add more as the demand grows.
+
+If you enter an invalid currency pair, the promise will reject with a list of supported currency pairs available.
+
+If you use Forexy in an _async / await_ then put the call into a Try {} catch {}. Otherwise use the catch((err))
+
+```javascript
+const currency = async (pair) => {
+  try {
+    // code that we will 'try' to run
+    let result = await currencyCheck.get("MONOPOLYMONEY");
+  } catch (error) {
+    // code to run if there are any problems
+    console.error(`Error: ${err}`); //display Error message
+  }
+};
+```
+
+Or using promise then().catch():
+
+```javascript
+currencyCheck
+  .get("MONOPOLYMONEY")
+  .then((result) => {
+    // code to run if the promise returns a resolve()
+  })
+  .catch((err) => {
+    // code to run if there are any problems
+    console.error(`Error: ${err}`);
+  });
+```
