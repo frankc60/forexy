@@ -1,8 +1,8 @@
 {
   "name": "forexy",
   "version": "1.0.0",
-  "description": "retrieve forex results",
-  "main": "index.js",
+  "description": "retrieve forex results fast",
+  "main": "forexy.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
