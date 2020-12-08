@@ -22,7 +22,7 @@ const currencyCheck = new Forexy();
 currencyCheck
   .get("USDGBP")
   .then((result) => {
-    console.log(`USD/GBP ${result}`);
+    console.log(`USD/GBP rate is ${result}`);
   })
   .catch((err) => {
     console.error(`Error: ${err}`);
@@ -31,16 +31,18 @@ currencyCheck
 
 ## Promise and Events
 
-Forexy returns a promise, which allows you to use an async/await function, or using then().catch().
+Forexy returns a promise, which allows you to use an _async_/_await_ function, or using _then().catch()_.
 
 ```javascript
 const currency = async (pair) => {
-  let rate = await currencyCheck.get("USDGBP");
-
-  console.log(`USDGBP rate is ${rate}`);
+  try {
+    let result = await currencyCheck.get("USDGBP");
+  } catch (err) {
+    console.error(`Error: ${err}`);
+  }
 };
 
-console.log(`USD-GBP rate is ${currency("USDGBP")}`);
+console.log(`USD/GBP rate is ${currency("USDGBP")}`);
 ```
 
 ...which is the same as
@@ -57,23 +59,6 @@ currencyCheck
 ```
 
 Forexy also has a host of Events that you can use through the lifecycle process.
-
-```javascript
-const currencyCheck = new Forexy();
-
-//On Events
-
-currencyCheck
-  .get("USDGBP")
-  .then((result) => {
-    console.log(`USD-GBP rate is ${result}`);
-  })
-  .catch((err) => {
-    console.error(`Error: ${err}`);
-  });
-```
-
-Check out the examples to see various options used.
 
 ### Events
 
