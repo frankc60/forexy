@@ -3,10 +3,10 @@
 ![dependencies](https://img.shields.io/badge/dependency%20count-0-blue)
 ![npm](https://img.shields.io/npm/v/forexy)
 ![CI Testing](https://github.com/frankc60/forexy/workflows/NodejsCI/badge.svg)
-![install size](https://badgen.net/packagephobia/install/forexy)
+![install size](https://badgen.net/badgesize/normal/https/unpkg.com/forexy@1.0.14/forexy.min.js)
 ![Code Scan Alerts](https://github.com/frankc60/forexy/workflows/CodeQL/badge.svg)
 
-A **'zero dependency'**, **light-weight** and **fast** node.js package that retrieves the latest Forex Currency pair results.
+A **small**, **'zero dependency'** and **fast** node.js package that retrieves the latest forex currency pair rates.
 
 ## Installation
 
