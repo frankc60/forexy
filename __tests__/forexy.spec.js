@@ -10,9 +10,7 @@ beforeAll(() => {
       function (err, stdout, stderr) {
         if (err || stderr) reject(err, stderr);
         else {
-          process.stdout.write(
-            "minification complete. Now run tests on minified code."
-          );
+          console.log("minification complete. Now run tests on minified code.");
 
           resolve(stdout);
         }

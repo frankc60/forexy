@@ -1,6 +1,6 @@
 # forexy
 
-![dependencies](https://img.shields.io/badge/Dependencies-0-blue)
+![dependencies](https://img.shields.io/badge/dependency%20count-0-blue)
 ![npm](https://img.shields.io/npm/v/forexy)
 ![CI Testing](https://github.com/frankc60/forexy/workflows/NodejsCI/badge.svg)
 ![install size](https://badgen.net/packagephobia/install/forexy)
