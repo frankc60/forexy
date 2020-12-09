@@ -59,6 +59,52 @@ describe("Forexy()", () => {
   //******************************************************************************** */
 });
 
+describe("Forexy() Events", () => {
+  const b = new Forexy({ mock: true });
+  const dnow = new Date();
+  //******************************************************************************** */
+
+  test("Default value is to use Real Data, mockdata to be false", () => {
+    b.on("statusCode", (d) => {
+      console.log("on statusCode:" + d);
+    });
+
+    const mockRes = {
+      write: jest.fn(),
+      on: jest.fn(),
+      end: jest.fn(),
+      fulldata: jest.fn(),
+    };
+
+    jest.mock("http", () => {
+      request: jest.fn().mockImplementation((url, options, cb) => {
+        cb(mockRes);
+      });
+    });
+
+    //        const resolve = jest.fn()
+    //       const reject = jest.fn()
+
+    mockRes.on.mockImplementation((event, cb) => {
+      if (event === "end") {
+        cb();
+      } else if (event === "fulldata") {
+        cb(new Error("invalid_json_string"));
+      }
+    });
+
+    expect(b.mockData).toBe(true);
+    console.log(`mockData: ${b.mockData}`);
+
+    jest.spyOn(mockRes, "fulldata");
+
+    // expect(mockRes.on).toHaveBeenCalledWith("fulldata", expect.any(String));
+    //  expect(reject).toHaveBeenCalledWith(expect.any(Error));
+    //const expected = { d: dnow.getDate(), m: dnow.getMonth() + 1 };
+    // console.log(a);
+    //expect(a).toMatchObject(expected);
+  });
+});
 //******************************************************************************** */
 //******************************************************************************** */
 //******************************************************************************** */

@@ -4,6 +4,7 @@
 ![npm](https://img.shields.io/npm/v/forexy)
 ![CI Testing](https://github.com/frankc60/forexy/workflows/NodejsCI/badge.svg)
 ![install size](https://badgen.net/packagephobia/install/forexy)
+![Code Scan Alerts](https://github.com/frankc60/forexy/workflows/CodeQL/badge.svg)
 
 A **'zero dependency'**, **light-weight** and **fast** node.js package that retrieves the latest Forex Currency pair results.
 
@@ -152,7 +153,7 @@ Forexy currently only offers the most popular currency pairs. I plan to add more
 
 If you enter an invalid currency pair, the promise will reject with a list of supported currency pairs available.
 
-If you use Forexy in an **async / await** then put the call into a Try {} catch {}. Otherwise use the Promise then().**catch((err)=>{//error handling})**
+If you use Forexy in an **async / await** then put the call into a Try {} catch {}. Otherwise use the Promise then().**catch((err)=> {})**
 
 ```javascript
 const currency = async (pair) => {
