@@ -42,9 +42,9 @@ Forexy returns a promise, which allows you to use an **async**/**await** functio
 ```javascript
 const currency = async (pair) => {
   try {
-    let result = await currencyCheck.get("USDGBP");
+    return await currencyCheck.get(pair);
   } catch (err) {
-    console.error(`Error: ${err}`);
+    return `Error: ${err}`;
   }
 };
 
