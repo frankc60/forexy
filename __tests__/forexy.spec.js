@@ -64,45 +64,33 @@ describe("Forexy() Events", () => {
   const dnow = new Date();
   //******************************************************************************** */
 
-  test("Default value is to use Real Data, mockdata to be false", () => {
+  test("get('gbpusd') expect a returned number value", async () => {
+    expect(b.mockData).toEqual(true);
+
     b.on("statusCode", (d) => {
       console.log("on statusCode:" + d);
+      expect(d).toEqual(expect.any(Number));
+      expect(d).toEqual(200);
+      //  expect(b.rate).toEqual(expect.any(Number));
     });
 
-    const mockRes = {
-      write: jest.fn(),
-      on: jest.fn(),
-      end: jest.fn(),
-      fulldata: jest.fn(),
-    };
+    const w = await b.get("usdgbp");
 
-    jest.mock("http", () => {
-      request: jest.fn().mockImplementation((url, options, cb) => {
-        cb(mockRes);
-      });
-    });
+    console.log(
+      `b.mockdata:${b.mockdata}\nb.rate:${b.rate}\nb.pair:${b.pair}\nw=${w}\nb.timestamp:${b.timestamp}\nb.fulldata:${b.fulldata}`
+    );
 
-    //        const resolve = jest.fn()
-    //       const reject = jest.fn()
+    expect(w).toEqual(expect.any(Number));
+    expect(w).toEqual(b.rate);
+    expect(b.rate).toEqual(expect.any(Number));
+    expect(b.pair).toEqual(expect.any(String));
+    expect(b.timestamp).toEqual(expect.any(Date));
+    expect(b.fulldata).toEqual(expect.any(Object));
+    expect(true).toBe(true);
+  });
 
-    mockRes.on.mockImplementation((event, cb) => {
-      if (event === "end") {
-        cb();
-      } else if (event === "fulldata") {
-        cb(new Error("invalid_json_string"));
-      }
-    });
-
-    expect(b.mockData).toBe(true);
-    console.log(`mockData: ${b.mockData}`);
-
-    jest.spyOn(mockRes, "fulldata");
-
-    // expect(mockRes.on).toHaveBeenCalledWith("fulldata", expect.any(String));
-    //  expect(reject).toHaveBeenCalledWith(expect.any(Error));
-    //const expected = { d: dnow.getDate(), m: dnow.getMonth() + 1 };
-    // console.log(a);
-    //expect(a).toMatchObject(expected);
+  test("dummy", async () => {
+    expect(true).toBe(true);
   });
 });
 //******************************************************************************** */

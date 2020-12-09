@@ -21,6 +21,10 @@ class Forexy extends Ee {
     super();
     //this.data = params;
     this.mockData = mock;
+    this.timestamp = "";
+    this.pair = "";
+    this.rate = 0;
+    this.fulldata = "";
   }
   get(pairs) {
     const uPairs = pairs.toUpperCase();
@@ -37,6 +41,14 @@ class Forexy extends Ee {
   _retrieveData(d) {
     return new Promise((resolve, reject) => {
       if (this.mockData) {
+        this.fulldata = {
+          rates: { [d]: { rate: 15.140088, timestamp: 1607414291 } },
+          code: 200,
+        };
+        this.pair = d;
+        this.timestamp = new Date();
+        this.rate = 1.2233;
+
         setTimeout(() => {
           this.emit("headers", {
             date: "Tue, 08 Dec 2020 07:58:34 GMT",
@@ -50,16 +62,13 @@ class Forexy extends Ee {
             "cf-cache-status": "DYNAMIC",
             nel: '{"report_to":"cf-nel","max_age":604800}',
           });
-          this.emit("fulldata", {
-            rates: { [d]: { rate: 15.140088, timestamp: 1607414291 } },
-            code: 200,
-          });
+          this.emit("fulldata", this.fulldata);
           this.emit("statusCode", 200);
           this.emit("stream", "stream data...");
-          this.emit("pair", d);
-          this.emit("timestamp", new Date());
-          this.emit("rate", 1.2233);
-          resolve(1.2233);
+          this.emit("pair", this.pair);
+          this.emit("timestamp", this.timestamp);
+          this.emit("rate", this.rate);
+          resolve(this.rate);
         }, 1000);
       } else {
         https
@@ -76,22 +85,22 @@ class Forexy extends Ee {
             res.on("end", () => {
               try {
                 let prs = JSON.parse(data);
-                this.emit("fulldata", prs);
-                this.emit("pair", [d]);
+                this.fulldata = prs;
+                this.pair = d;
+                this.emit("fulldata", this.fulldata);
+                this.emit("pair", this.pair);
 
                 if (prs.message) {
                   reject(
                     `${prs.message} Supported pairs: ${prs.supportedPairs}`
                   );
                 } else {
-                  this.emit(
-                    "timestamp",
-                    new Date(prs.rates[d].timestamp * 1000)
-                  );
-                  this.emit("rate", prs.rates[d].rate);
+                  this.timestamp = prs.rates[d].timestamp * 1000;
+                  this.rate = prs.rates[d].rate;
+                  this.emit("timestamp", new Date(this.timestamp));
+                  this.emit("rate", this.rate);
                   resolve(prs.rates[d].rate);
                 }
-
                 // {"message":"The currency pair 'GBPNZD' was not recognised or supported"
               } catch (er) {
                 reject(er);
