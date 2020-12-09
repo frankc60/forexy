@@ -1,6 +1,6 @@
 {
   "name": "forexy",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "retrieve forex results fast",
   "main": "forexy.min.js",
   "scripts": {

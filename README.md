@@ -1,6 +1,6 @@
 # forexy
 
-A 'zero dependency', light-weight fast node.js tool to retrieve the latest Forex Currency pair results.
+A **'zero dependency'**, **light-weight** and **fast** node.js tool that retrieves the latest Forex Currency pair results.
 
 ## Installation
 
@@ -12,7 +12,7 @@ $ npm i --save forexy
 
 ## Usage and Examples
 
-To retrieve forex results for the USD/GBP pair (US dollar to Great British Pound:
+To retrieve forex results for the USD/GBP pair (US dollar to Great British Pound):
 
 ```javascript
 const Forexy = require("forexy");
@@ -31,7 +31,7 @@ currencyCheck
 
 ## Promise and Events
 
-Forexy returns a promise, which allows you to use an _async_/_await_ function, or using _then().catch()_.
+Forexy returns a promise, which allows you to use an **async**/**await** function, or using **then().catch()**.
 
 ```javascript
 const currency = async (pair) => {
@@ -58,9 +58,9 @@ currencyCheck
   });
 ```
 
-Forexy also has a host of Events that you can use through the lifecycle process.
-
 ### Events
+
+Forexy also has a host of Events that you can use through the lifecycle process.
 
 #### fulldata
 
@@ -147,7 +147,7 @@ Forexy currently only offers the most popular currency pairs. I plan to add more
 
 If you enter an invalid currency pair, the promise will reject with a list of supported currency pairs available.
 
-If you use Forexy in an _async / await_ then put the call into a Try {} catch {}. Otherwise use the catch((err))
+If you use Forexy in an **async / await** then put the call into a Try {} catch {}. Otherwise use the Promise then().**catch((err)=>{//error handling})**
 
 ```javascript
 const currency = async (pair) => {
