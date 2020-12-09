@@ -4,3 +4,4 @@ index.js
 nodes_modules
 .github
 __tests__
+coverage
