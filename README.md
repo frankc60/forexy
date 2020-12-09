@@ -1,5 +1,9 @@
 # forexy
 
+![dependencies](https://img.shields.io/badge/0-Dependencies-blue)
+![npm](https://img.shields.io/npm/v/forexy)
+![install size](https://badgen.net/packagephobia/install/forexy)
+
 A **'zero dependency'**, **light-weight** and **fast** node.js tool that retrieves the latest Forex Currency pair results.
 
 ## Installation
