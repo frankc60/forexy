@@ -17,10 +17,10 @@ class Ee {
 class Forexy extends Ee {
   static _url = "https://www.freeforexapi.com/api/live";
 
-  constructor(params) {
+  constructor({ mock } = { mock: false }) {
     super();
-    this.data = params;
-    this.mockData = params.mock;
+    //this.data = params;
+    this.mockData = mock;
   }
   get(pairs) {
     const uPairs = pairs.toUpperCase();

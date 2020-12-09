@@ -1,6 +1,6 @@
 {
   "name": "forexy",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "retrieve forex results fast",
   "main": "forexy.min.js",
   "scripts": {
@@ -10,7 +10,7 @@
     "version:bump": "npm version patch --no-git-tag-version --silent",
     "version:extract": "cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]'",
     "gitstuff": "git add . && git commit -m",
-    "test": "echo \"Error: no test specified\""
+    "test": "jest --notify --verbose"
   },
   "vars": {
     "email": "frankc60@gmail.com",
@@ -23,6 +23,7 @@
   "author": "frankc60",
   "license": "ISC",
   "devDependencies": {
+    "jest": "^26.6.3",
     "terser": "^5.5.1"
   }
 }
