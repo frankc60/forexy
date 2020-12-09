@@ -1,8 +1,10 @@
 {
   "name": "forexy",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "retrieve forex results fast",
   "main": "forexy.min.js",
+  "repository": "https://github.com/frankc60/forexy",
+  "bugs": "https://github.com/frankc60/forexy/issues",
   "scripts": {
     "minifyJS": "terser ${npm_package_vars_source} --compress  passes=4  --mangle reserved=['require','exports'],toplevel=true,keep_classnames=false,module=true --keep_fnames=false  --warn --output ${npm_package_main} ",
     "production": "npm run version:bump --silent && rm -f ${npm_package_main} && npm run minifyJS --silent && npm run version:add --silent && npm test && npm run gitstuff -- \"$(npm run version:extract --silent)\"",
@@ -18,9 +20,12 @@
     "comments": "blank comment"
   },
   "keywords": [
-    "forex"
+    "forex",
+    "nodejs",
+    "zero dependency",
+    "currency"
   ],
-  "author": "frankc60",
+  "author": "frankc60 <frankc60@gmail.com>",
   "license": "ISC",
   "devDependencies": {
     "jest": "^26.6.3",

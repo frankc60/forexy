@@ -5,7 +5,7 @@
 ![CI Testing](https://github.com/frankc60/forexy/workflows/NodejsCI/badge.svg)
 ![install size](https://badgen.net/packagephobia/install/forexy)
 
-A **'zero dependency'**, **light-weight** and **fast** node.js tool that retrieves the latest Forex Currency pair results.
+A **'zero dependency'**, **light-weight** and **fast** node.js package that retrieves the latest Forex Currency pair results.
 
 ## Installation
 
