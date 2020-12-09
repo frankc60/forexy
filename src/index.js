@@ -26,8 +26,19 @@ class Forexy extends Ee {
     this.rate = 0;
     this.fulldata = "";
   }
+
+  static tidyPairs(pair) {
+    let formattedPair = pair.toUpperCase();
+    formattedPair = formattedPair.replace(/\//g, "");
+    formattedPair = formattedPair.replace(/\-/g, "");
+    formattedPair = formattedPair.replace(/\s/g, "");
+    // console.log("tidyPairs:" + pair + " to: " + formattedPair);
+    return formattedPair;
+  }
+
   get(pairs) {
-    const uPairs = pairs.toUpperCase();
+    const uPairs = Forexy.tidyPairs(pairs);
+
     return new Promise((resolve, reject) => {
       try {
         this.emit("request", uPairs);

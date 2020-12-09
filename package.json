@@ -1,6 +1,6 @@
 {
   "name": "forexy",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "description": "retrieve forex results fast",
   "main": "forexy.min.js",
   "repository": "https://github.com/frankc60/forexy",
@@ -12,6 +12,7 @@
     "version:bump": "npm version patch --no-git-tag-version --silent",
     "version:extract": "cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]'",
     "gitstuff": "git add . && git commit -m",
+    "testcmd": "npm run minifyJS && npm test",
     "test": "jest --coverage"
   },
   "vars": {

@@ -72,7 +72,7 @@ describe("Forexy() Events", () => {
       //  expect(b.rate).toEqual(expect.any(Number));
     });
 
-    const w = await b.get("usdgbp");
+    const w = await b.get("usd gbp");
 
     console.log(
       `b.mockdata:${b.mockdata}\nb.rate:${b.rate}\nb.pair:${b.pair}\nw=${w}\nb.timestamp:${b.timestamp}\nb.fulldata:${b.fulldata}`
