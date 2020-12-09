@@ -90,6 +90,21 @@ describe("Forexy() Events", () => {
   test("dummy", async () => {
     expect(true).toBe(true);
   });
+
+  test("query NONPAIR value, mockdata = false", async () => {
+    b.mockData = false;
+    expect(b.mockData).toBe(false);
+
+    try {
+      const w = await b.get("NONPAIR");
+    } catch (err) {
+      console.log("error: " + err);
+    }
+
+    //const expected = { d: dnow.getDate(), m: dnow.getMonth() + 1 };
+    // console.log(a);
+    //expect(a).toMatchObject(expected);
+  });
 });
 //******************************************************************************** */
 //******************************************************************************** */
