@@ -18,9 +18,9 @@ $ npm i --save forexy
 
 ## Usage and Examples
 
-To retrieve forex results for the USD/GBP pair (US dollar to Great British Pound) we pass the two currency codes to the get() method.
+To retrieve forex results for the USD/GBP pair (US dollar to Great British Pound) we pass the two currency codes to the **get()** method.
 
-The Currency codes are case insensitive and can be split with a forward slash /, a dash -, a space or together.
+The currency pair are case insensitive and can be split with: a forward slash /, a dash -, a space or kept together.
 
 ```javascript
 const Forexy = require("forexy");
@@ -28,7 +28,7 @@ const Forexy = require("forexy");
 const currencyCheck = new Forexy();
 
 currencyCheck
-  .get("USD/GBP") //case insensitive and in formats: "usdgbp", "usb gbp", "usd-gbp"
+  .get("USD/GBP") //case insensitive and in formats: "usdgbp", "usb gbp", "usd-gbp", "usd/gbp"
   .then((result) => {
     console.log(`USD/GBP rate is ${result}`);
   })
@@ -36,16 +36,6 @@ currencyCheck
     console.error(`Error: ${err}`);
   });
 ```
-
-## get() method
-
-The Currency codes are case insensitive and can be split with a forward slash /, a dash -, a space or together.
-
-- GBPEUR
-- gbpeur
-- GBP EUR
-- GBP/EUR
-- GBP-EUR
 
 ## Promise and Events
 
@@ -164,20 +154,28 @@ Forexy has constructor properties (prototypes), which store the values of the la
 - rate
 - fulldata
 
+A full example:
+
 ```javascript
+const Forexy = require("forexy");
 const currencyCheck = new Forexy();
 
-currencyCheck.get("usd/gbp");
-
-console.log(
-  `Last lookup was for ${currencyCheck.pair}, at ${currencyCheck.timestamp} and the rate was ${currencyCheck.rate}`
-);
+currencyCheck
+  .get("USD/GBP") //case insensitive and in formats: "usdgbp", "usb gbp", "usd-gbp", "usd/gbp"
+  .then((result) => {
+    console.log(`${currencyCheck.pair} rate @ 
+      ${Date(currencyCheck.timestamp)} 
+      is ${result}`);
+  })
+  .catch((err) => {
+    console.error(`Error: ${err}`);
+  });
 ```
 
-output...
+output
 
-```shell
-Last lookup was for USDGBP, at 12:03 3rd Sept 2021 and the rate was 1.4862
+```{r, engine='bash', count_lines}
+USDGBP rate @ Fri Dec 11 2021 09:24:36 GMT is 0.751521
 ```
 
 ## Error Handling
