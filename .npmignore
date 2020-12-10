@@ -5,3 +5,4 @@ nodes_modules
 .github
 __tests__
 coverage
+jest.config.js
