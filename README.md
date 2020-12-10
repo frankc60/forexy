@@ -18,7 +18,26 @@ $ npm i --save forexy
 
 ## Usage and Examples
 
-To retrieve forex results for the USD/GBP pair (US dollar to Great British Pound) pass the currency codes to the get() method.
+To retrieve forex results for the USD/GBP pair (US dollar to Great British Pound) we pass the two currency codes to the get() method.
+
+The Currency codes are case insensitive and can be split with a forward slash /, a dash -, a space or together.
+
+```javascript
+const Forexy = require("forexy");
+
+const currencyCheck = new Forexy();
+
+currencyCheck
+  .get("USD/GBP") //case insensitive and in formats: "usdgbp", "usb gbp", "usd-gbp"
+  .then((result) => {
+    console.log(`USD/GBP rate is ${result}`);
+  })
+  .catch((err) => {
+    console.error(`Error: ${err}`);
+  });
+```
+
+## get() method
 
 The Currency codes are case insensitive and can be split with a forward slash /, a dash -, a space or together.
 
@@ -28,24 +47,9 @@ The Currency codes are case insensitive and can be split with a forward slash /,
 - GBP/EUR
 - GBP-EUR
 
-```javascript
-const Forexy = require("forexy");
-
-const currencyCheck = new Forexy();
-
-currencyCheck
-  .get("USD/GBP")
-  .then((result) => {
-    console.log(`USD/GBP rate is ${result}`);
-  })
-  .catch((err) => {
-    console.error(`Error: ${err}`);
-  });
-```
-
 ## Promise and Events
 
-Forexy returns a promise, which allows you to use an **async**/**await** function, or a **then().catch()**.
+Forexy returns a promise, which allows you to use an **async**/**await** function, or **then().catch()**.
 
 ```javascript
 const currency = async (pair) => {
