@@ -188,7 +188,7 @@ Forexy currently only offers the most popular currency pairs. I plan to add more
 
 If you enter an invalid currency pair, the promise will reject with a list of supported currency pairs available.
 
-If you use Forexy in an **async / await** then put the call into a Try {} catch {}. Otherwise use the Promise then().**catch((err)=> {})**
+If you use Forexy with **async / await** then wrap the call into a Try {} catch {}. Otherwise use the Promise then().catch(). Any Errors will be directed to the **catch()**
 
 ```javascript
 const currency = async (pair) => {
@@ -202,7 +202,7 @@ const currency = async (pair) => {
 };
 ```
 
-Or using promise then().catch():
+or using promise then().catch():
 
 ```javascript
 currencyCheck
