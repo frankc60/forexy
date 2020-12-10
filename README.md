@@ -45,7 +45,7 @@ currencyCheck
 
 ## Promise and Events
 
-Forexy returns a promise, which allows you to use an **async**/**await** function, or using **then().catch()**.
+Forexy returns a promise, which allows you to use an **async**/**await** function, or a **then().catch()**.
 
 ```javascript
 const currency = async (pair) => {
@@ -113,7 +113,7 @@ currencyCheck.on("pair", (data) => {
 
 ```javascript
 currencyCheck.on("statusCode", (data) => {
-  //If no errors should return '200'
+  //If no errors then returns '200'
   console.log("on statusCode:" + data);
 });
 ```
