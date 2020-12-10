@@ -32,7 +32,6 @@ jest.mock("../onday.min.js", () => {
 */
 
 describe("Forexy()", () => {
-  const b = new Forexy({ mock: true });
   const dnow = new Date();
   //******************************************************************************** */
 
@@ -46,9 +45,10 @@ describe("Forexy()", () => {
     //expect(a).toMatchObject(expected);
   });
   test("query GBPUSD, mockdata = true", () => {
-    expect(b.mockData).toBe(true);
+    const b = new Forexy({ mock: true });
 
-    console.log(`mockData: ${b.mockData}`);
+    console.log(`b.mockData: ${b.mockData}`);
+    expect(b.mockData).toBe(true);
     //const expected = { d: dnow.getDate(), m: dnow.getMonth() + 1 };
     // console.log(a);
     //expect(a).toMatchObject(expected);
@@ -75,7 +75,7 @@ describe("Forexy() Events", () => {
     const w = await b.get("usd gbp");
 
     console.log(
-      `b.mockdata:${b.mockdata}\nb.rate:${b.rate}\nb.pair:${b.pair}\nw=${w}\nb.timestamp:${b.timestamp}\nb.fulldata:${b.fulldata}`
+      `b.mockData:${b.mockData}\nb.rate:${b.rate}\nb.pair:${b.pair}\nw=${w}\nb.timestamp:${b.timestamp}\nb.fulldata:${b.fulldata}`
     );
 
     expect(w).toEqual(expect.any(Number));
@@ -92,18 +92,25 @@ describe("Forexy() Events", () => {
   });
 
   test("query NONPAIR value, mockdata = false", async () => {
-    b.mockData = false;
-    expect(b.mockData).toBe(false);
+    const c = new Forexy({ mock: true });
+
+    c.mockData = false;
+    expect(c.mockData).toBe(false);
 
     try {
-      const w = await b.get("NONPAIR");
+      // expect.assertions(3);
+      const w = await c.get("NONPAIR");
+
+      expect(w).toMatch(/not processed/g);
     } catch (err) {
       console.log("error: " + err);
+      expect(err).toMatch(/not recognised/g);
+      expect(err).toEqual(
+        expect.stringMatching(
+          /The currency pair 'NONPAIR' was not recognised or supported.*/g
+        )
+      );
     }
-
-    //const expected = { d: dnow.getDate(), m: dnow.getMonth() + 1 };
-    // console.log(a);
-    //expect(a).toMatchObject(expected);
   });
 });
 //******************************************************************************** */

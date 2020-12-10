@@ -18,7 +18,15 @@ $ npm i --save forexy
 
 ## Usage and Examples
 
-To retrieve forex results for the USD/GBP pair (US dollar to Great British Pound):
+To retrieve forex results for the USD/GBP pair (US dollar to Great British Pound) pass the currency codes to the get() method.
+
+The Currency codes are case insensitive and can be split with a forward slash /, a dash -, a space or together.
+
+- GBPEUR
+- gbpeur
+- GBP EUR
+- GBP/EUR
+- GBP-EUR
 
 ```javascript
 const Forexy = require("forexy");
@@ -26,7 +34,7 @@ const Forexy = require("forexy");
 const currencyCheck = new Forexy();
 
 currencyCheck
-  .get("USDGBP")
+  .get("USD/GBP")
   .then((result) => {
     console.log(`USD/GBP rate is ${result}`);
   })
@@ -48,14 +56,14 @@ const currency = async (pair) => {
   }
 };
 
-console.log(`USD/GBP rate is ${currency("USDGBP")}`);
+console.log(`USD/GBP rate is ${currency("USD GBP")}`);
 ```
 
 ...which is the same as
 
 ```javascript
 currencyCheck
-  .get("USDGBP")
+  .get("usdgbp")
   .then((result) => {
     console.log(`USD-GBP rate is ${result}`);
   })
