@@ -251,4 +251,4 @@ Drop me a line if your currency pair isn't there, and I will look at getting it 
 - 1.0.x - Using an public free API, JSON returned is fixed.
 
 - 1.1.x - Setting up a free Custom API, JSON is customised for Forexy. Caching including to allow higher scale traffic. Backwards
-  compatible with v.1.0.x. New functionality coming for the new JSON !
+  compatible with v.1.0.x. Larger Currency pair values available. New functionality coming very soon !
