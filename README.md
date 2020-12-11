@@ -245,3 +245,10 @@ USDTZS,USDUAH,USDUGX,USDUSD,USDUYU,USDUZS,USDVAL,USDVEB,USDVEF,USDVES,USDVND,USD
 USDXDR,USDXOF,USDXPD,USDXPF,USDXPT,USDYER,USDZAR,USDZMK,USDZMW,USDZWD.
 
 Drop me a line if your currency pair isn't there, and I will look at getting it added. You can also raise an Issue in github.
+
+## Version Changes
+
+- 1.0.x - Using an public free API, JSON returned is fixed.
+
+- 1.1.x - Setting up a free Custom API, JSON is customised for Forexy. Caching including to allow higher scale traffic. Backwards
+  compatible with v.1.0.x
