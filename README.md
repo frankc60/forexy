@@ -6,7 +6,7 @@
 ![install size](https://badgen.net/badgesize/normal/https/unpkg.com/forexy/forexy.min.js)
 ![Code Scan Alerts](https://github.com/frankc60/forexy/workflows/CodeQL/badge.svg)
 
-A **small**, **'zero dependency'** and **fast** node.js package that retrieves the latest forex currency pair rates.
+A **small**, **'zero dependency'** **fast** node.js package that retrieves the latest forex currency pair rates.
 
 ## Installation
 
