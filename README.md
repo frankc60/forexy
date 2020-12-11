@@ -252,3 +252,4 @@ Drop me a line if your currency pair isn't there, and I will look at getting it 
 
 - 1.1.x - Setting up a free Custom API, JSON is customised for Forexy. Caching including to allow higher scale traffic. Backwards
   compatible with v.1.0.x. Larger Currency pair values available. New functionality coming very soon !
+  BETA access available to new functionality by calling Forexy constructor method and passing the object value: { v:2 }, for example: `const currencyCheck = new Forexy({ v: 2 });`. You will see a slightly different object returned, with different properties.
