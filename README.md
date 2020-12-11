@@ -147,12 +147,23 @@ currencyCheck.on("stream", (data) => {
 
 ## Properties
 
-Forexy has constructor properties (prototypes), which store the values of the last currency pair check. These can be accessed at anytime after calling the get() method.
+Forexy has constructor properties (prototypes), which get set during the last successful calling of the get() method.
 
-- timestamp
-- pair
-- rate
-- fulldata
+#### obj.timestamp
+
+This is an epoch timestamp. Convert it to a **new Date(obj.timestamp)** object type to manipulate it as a Date.
+
+#### obj.pair
+
+Six characters of the two currency codes. For example, USDAUD (US Dollar against Australian Dollar).
+
+#### obj.rate
+
+A _numeric float_ indicating the last returned rate for the given currency **pair**, for example, 1.7453
+
+#### obj.fulldata
+
+An _object_ of all values returned from the last get().
 
 A full example:
 
@@ -164,7 +175,7 @@ currencyCheck
   .get("USD/GBP") //case insensitive and in formats: "usdgbp", "usb gbp", "usd-gbp", "usd/gbp"
   .then((result) => {
     console.log(`${currencyCheck.pair} rate @ 
-      ${Date(currencyCheck.timestamp)} 
+      ${new Date(currencyCheck.timestamp)} 
       is ${result}`);
   })
   .catch((err) => {
@@ -177,6 +188,8 @@ output
 ```{r, engine='bash', count_lines}
 USDGBP rate @ Fri Dec 11 2021 09:24:36 GMT is 0.751521
 ```
+
+---
 
 ## Error Handling
 
