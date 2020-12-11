@@ -35,7 +35,7 @@ describe("Forexy()", () => {
   const dnow = new Date();
   //******************************************************************************** */
 
-  test("Default value is to use Real Data, mockdata to be false", () => {
+  test("Default value, mockdata to be false", () => {
     const a = new Forexy();
 
     expect(a.mockData).toBe(false);
@@ -62,7 +62,7 @@ describe("Forexy() Events", () => {
   const dnow = new Date();
   //******************************************************************************** */
 
-  test("get('gbpusd') expect a returned number value", async () => {
+  test("get('gbpusd') expect a returned number value, and check events", async () => {
     expect(b.mockData).toEqual(true);
 
     b.on("statusCode", (d) => {
