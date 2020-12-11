@@ -1,4 +1,3 @@
-const { promises } = require("fs");
 const https = require("https");
 
 class Ee {
