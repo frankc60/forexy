@@ -18,9 +18,9 @@ $ npm i --save forexy
 
 ## Usage and Examples
 
-To retrieve forex results for the USD/GBP pair (US dollar to Great British Pound) we pass the two currency codes to the **get()** method.
+To retrieve forex results for the USD/GBP pair (_US dollar to Great British Pound_) we pass the two currency codes to the **get()** method. The **get()** method returns the rate exchange in the first currency (in example USD $).
 
-The currency pair are case insensitive and can be split with: a forward slash /, a dash -, a space or kept together.
+The currency pair are case insensitive and can be split using: a space, kept together, a forward slash /, or a dash -
 
 ```javascript
 const Forexy = require("forexy");
@@ -39,18 +39,19 @@ currencyCheck
 
 ## Promise and Events
 
-Forexy returns a promise, which allows you to use an **async**/**await** function, or **then().catch()**.
+Forexy returns a Promise, which allows you to use an **async**/**await** function, or **then().catch()**.
 
 ```javascript
 const currency = async (pair) => {
   try {
-    return await currencyCheck.get(pair);
+    let result = await currencyCheck.get(pair).then((rate) => rate);
+    console.log(`USD/GBP rate is ${result}`);
   } catch (err) {
     return `Error: ${err}`;
   }
 };
 
-console.log(`USD/GBP rate is ${currency("USD GBP")}`);
+currency("USD GBP");
 ```
 
 ...which is the same as
@@ -193,7 +194,7 @@ USDGBP rate @ Fri Dec 11 2021 09:24:36 GMT is 0.751521
 
 ## Error Handling
 
-Forexy has built in Error Handling, which will catch any issues in Development.
+Forexy has built in Error Handling, which will _catch_ any issues in development.
 
 ### Unsupported Forex Pairs
 
@@ -229,7 +230,7 @@ currencyCheck
   });
 ```
 
-### Supported Currency Pairs
+### Supported Currency Pairs. v.1.0
 
 AUDUSD,EURGBP,EURUSD,GBPUSD,NZDUSD,USDAED,USDAFN,USDALL,USDAMD,USDANG,USDAOA,USDARS,USDATS,USDAUD,USDAWG,USDAZM,USDAZN,USDBAM,  
 USDBBD,USDBDT,USDBEF,USDBGN,USDBHD,USDBIF,USDBMD,USDBND,USDBOB,USDBRL,USDBSD,USDBTN,USDBWP,USDBYN,USDBYR,USDBZD,USDCAD,USDCDF,  
@@ -250,6 +251,7 @@ Drop me a line if your currency pair isn't there, and I will look at getting it 
 
 - 1.0.x - Using an public free API, JSON returned is fixed.
 
-- 1.1.x - Setting up a free Custom API, JSON is customised for Forexy. Caching including to allow higher scale traffic. Backwards
-  compatible with v.1.0.x. Larger Currency pair values available. New functionality coming very soon !
-  BETA access available to new functionality by calling Forexy constructor method and passing the object value: { v:2 }, for example: `const currencyCheck = new Forexy({ v: 2 });`. You will see a slightly different object returned, with different properties.
+- 1.1.x - Setting up a Custom API, with the JSON customised for Forexy. Caching including to allow more traffic. Backwards
+  compatible with v.1.0.x. A larger number of currency pair values available. New functionality to be added - coming very soon !
+
+  BETA access is available for v.1.1.x - call the Forexy constructor method with the object values: { v:2 }, for example: `const currencyCheck = new Forexy({ v: 2 });`. When you call the get() method the **new** API call will be used and return a slightly different object, with different properties. It is planned to make this new functionality available soon and have it fully backwards compatible with v.1.0.x.
