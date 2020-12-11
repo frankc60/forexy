@@ -17,7 +17,7 @@ class Ee {
 
 class Forexy extends Ee {
   static _url = "https://www.freeforexapi.com/api/live";
-  static _url2 = "https://coffeeboat.co.uk/forexy/test.php";
+  static _url2 = "https://coffeeboat.co.uk/forexy/forexy.php";
 
   constructor(args = {}) {
     super();
@@ -39,7 +39,7 @@ class Forexy extends Ee {
     let f = twoPair[1];
     let t = twoPair[2];
 
-    console.log(`t:${t}, f:${f}`);
+    // console.log(`t:${t}, f:${f}`);
     return [f, t];
   }
 
@@ -54,7 +54,7 @@ class Forexy extends Ee {
 
   get(pairs) {
     const uPairs = Forexy.tidyPairs(pairs);
-    console.log(`this.v: ${this.v}, this.mockData: ${this.mockData}`);
+    //console.log(`this.v: ${this.v}, this.mockData: ${this.mockData}`);
     return new Promise((resolve, reject) => {
       try {
         this.emit("request", uPairs);
@@ -159,7 +159,7 @@ class Forexy extends Ee {
       if (this.mockData) {
         resolve(this.mockRetrieveData(ffrom + tto));
       } else {
-        console.log(`_retrieveData2(${ffrom}, ${tto})`);
+        //console.log(`_retrieveData2(${ffrom}, ${tto})`);
         https
           .get(`${Forexy._url2}?f=${ffrom}&t=${tto}`, (res) => {
             let data = "";
