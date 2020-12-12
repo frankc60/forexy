@@ -52,10 +52,9 @@ class Forexy extends Ee {
   }
 
   get(pairs) {
-    const uPairs = Forexy.tidyPairs(pairs);
-    //console.log(`this.v: ${this.v}, this.mockData: ${this.mockData}`);
     return new Promise((resolve, reject) => {
       try {
+        const uPairs = Forexy.tidyPairs(pairs);
         this.emit("request", uPairs);
         if (this.v == 1) {
           resolve(this._retrieveData(uPairs));
