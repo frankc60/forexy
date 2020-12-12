@@ -121,13 +121,26 @@ class Forexy extends Ee {
   mockRetrieveData(d) {
     return new Promise((resolve, reject) => {
       //
-      this.fulldata = {
-        rates: { [d]: { rate: 15.140088, timestamp: 1607414291 } },
-        code: 200,
-      };
+
       this.pair = d;
       this.timestamp = new Date();
       this.rate = 1.2233;
+      this.cache = 0;
+      this.code = 200;
+      this.author = "frankc60";
+      this.fulldata = {
+        rates: {
+          [d]: {
+            rate: this.rate,
+            timestamp: this.timestamp,
+            code: this.code,
+            cache: this.cache,
+            author: this.author,
+            pair: this.pair,
+          },
+        },
+        code: this.code,
+      };
 
       setTimeout(() => {
         this.emit("headers", {
