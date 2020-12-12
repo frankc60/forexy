@@ -7,7 +7,7 @@
 ![Code Scan Alerts](https://github.com/frankc60/forexy/workflows/CodeQL/badge.svg)
 [![Coverage Status](https://coveralls.io/repos/github/frankc60/forexy/badge.svg?branch=main)](https://coveralls.io/github/frankc60/forexy?branch=main)
 
-A **small**, **'zero dependency'** **fast** node.js package that retrieves the latest forex currency pair rates.
+A **small**, **'zero dependency'** **fast** node.js package that delivers the latest forex rates for a given currency pair.
 
 ## Installation
 
@@ -19,7 +19,7 @@ $ npm i --save forexy
 
 ## Usage and Examples
 
-To retrieve forex results for the USD/GBP pair (_US dollar to Great British Pound_) we pass the two currency codes to the **get()** method. The **get()** method returns the rate exchange in the first currency (in example USD $).
+To retrieve the latest forex rates for USD/GBP (_US dollar to Great British Pound_) we pass the two currency codes to the **get()** method. The **get()** method returns the rate, in the first currency denomination (in this example the USD $).
 
 The currency pair are case insensitive and can be split using: a space, kept together, a forward slash /, or a dash -
 
