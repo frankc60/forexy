@@ -78,6 +78,7 @@ class Forexy extends Ee {
         https
           .get(`${Forexy._url}?pairs=${d}`, (res) => {
             let data = "";
+            this.code = res.statusCode;
             this.emit("statusCode", res.statusCode);
             this.emit("headers", res.headers);
 
