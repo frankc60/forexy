@@ -5,6 +5,7 @@
 ![CI Testing](https://github.com/frankc60/forexy/workflows/NodejsCI/badge.svg)
 ![install size](https://badgen.net/badgesize/normal/https/unpkg.com/forexy/forexy.min.js)
 ![Code Scan Alerts](https://github.com/frankc60/forexy/workflows/CodeQL/badge.svg)
+[![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Ffrankc60%2Fforexy%2Fbadge%3Fref%3Dmain&style=flat)](https://actions-badge.atrox.dev/frankc60/forexy/goto?ref=main)
 [![Coverage Status](https://coveralls.io/repos/github/frankc60/forexy/badge.svg?branch=main)](https://coveralls.io/github/frankc60/forexy?branch=main)
 
 A **small**, **'zero dependency'** **fast** node.js package that delivers the latest forex rates for a given currency pair.
