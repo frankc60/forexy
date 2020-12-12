@@ -20,7 +20,7 @@ $ npm i --save forexy
 
 ## Usage and Examples
 
-To retrieve the latest forex rates for USD/GBP (_US dollar to Great British Pound_) we pass the two currency codes to the **get()** method. The **get()** method returns the rate, in the first currency denomination (in this example the USD $).
+To retrieve the latest forex rates for USD/GBP (_US dollar to Great British Pound_) we pass the two currency codes to the **get()** method. The **get()** method returns the current rate, in the first currency denomination (in this example in USD $).
 
 The currency pair are case insensitive and can be split using: a space, kept together, a forward slash /, or a dash -
 
@@ -39,7 +39,7 @@ currencyCheck
   });
 ```
 
-## Promise and Events
+## Promise
 
 Forexy returns a Promise, which allows you to use an **async**/**await** function, or **then().catch()**.
 
@@ -69,11 +69,11 @@ currencyCheck
   });
 ```
 
-### Events
+## Events
 
 Forexy also has a host of Events that you can use through the lifecycle process.
 
-#### fulldata
+### fulldata
 
 Get a JSON object with all data.
 
@@ -85,7 +85,7 @@ currencyCheck.on("fulldata", (data) => {
 });
 ```
 
-#### timestamp
+### timestamp
 
 This returns a Date object, which can be further manipulated, this will be approximately the current timestamp.
 
@@ -96,7 +96,7 @@ currencyCheck.on("timestamp", (data) => {
 });
 ```
 
-#### pair
+### pair
 
 Returns the currency pair values, in uppercase.
 
@@ -106,7 +106,7 @@ currencyCheck.on("pair", (data) => {
 });
 ```
 
-#### statusCode
+### statusCode
 
 ```javascript
 currencyCheck.on("statusCode", (data) => {
@@ -115,7 +115,7 @@ currencyCheck.on("statusCode", (data) => {
 });
 ```
 
-#### rate
+### rate
 
 _rate_ is the same as the default value returned from the get() method.
 
@@ -126,7 +126,7 @@ currencyCheck.on("rate", (data) => {
 });
 ```
 
-#### request
+### request
 
 Triggered before the request is made. Returns the currency pair value.
 
@@ -137,7 +137,7 @@ currencyCheck.on("request", (data) => {
 });
 ```
 
-#### stream
+### stream
 
 The same returned data as 'fulldata' but streamed.
 
