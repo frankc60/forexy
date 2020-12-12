@@ -1,5 +1,5 @@
-const Forexy = require("../src/index"); //can see seperate line numbers in coveralls report!
-//const Forexy = require("../forexy.min");
+//const Forexy = require("../src/index"); //can see seperate line numbers in coveralls report!
+const Forexy = require("../forexy.min");
 const exec = require("child_process").exec;
 //******************************************************************************** */
 beforeAll(() => {
