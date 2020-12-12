@@ -150,19 +150,19 @@ currencyCheck.on("stream", (data) => {
 
 Forexy has constructor properties (prototypes), which get set during the last successful calling of the get() method.
 
-#### obj.timestamp
+### obj.timestamp
 
 This is an epoch timestamp. Convert it to a **new Date(obj.timestamp)** object type to manipulate it as a Date.
 
-#### obj.pair
+### obj.pair
 
 Six characters of the two currency codes. For example, USDAUD (US Dollar against Australian Dollar).
 
-#### obj.rate
+### obj.rate
 
 A _numeric float_ indicating the last returned rate for the given currency **pair**, for example, 1.7453
 
-#### obj.fulldata
+### obj.fulldata
 
 An _object_ of all values returned from the last get().
 
