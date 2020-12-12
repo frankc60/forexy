@@ -100,7 +100,7 @@ class Forexy extends Ee {
                     `${prs.message} Supported pairs: ${prs.supportedPairs}`
                   );
                 } else {
-                  this.timestamp = prs.rates[d].timestamp * 1000;
+                  this.timestamp = prs.rates[d].timestamp;
                   this.rate = prs.rates[d].rate;
                   this.emit("timestamp", new Date(this.timestamp));
                   this.emit("rate", this.rate);
@@ -199,10 +199,12 @@ class Forexy extends Ee {
 
                 if (prs.error) {
                   reject(
-                    `${prs.error}, error ${prs.code} @ ${Date(prs.timestamp)}`
+                    `${prs.error}, error ${prs.code} @ ${new Date(
+                      prs.timestamp
+                    )}`
                   );
                 } else {
-                  this.timestamp = prs.timestamp * 1000;
+                  this.timestamp = prs.timestamp;
                   this.rate = prs.rate;
                   this.emit("timestamp", new Date(this.timestamp));
                   this.emit("rate", this.rate);

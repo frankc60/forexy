@@ -148,13 +148,13 @@ currencyCheck.on("stream", (data) => {
 });
 ```
 
-## Properties
+## Properties v.1.0
 
 Forexy has constructor properties (prototypes), which get set during the last successful calling of the get() method.
 
 ### obj.timestamp
 
-This is an epoch timestamp. Convert it to a **new Date(obj.timestamp)** object type to manipulate it as a Date.
+This is an **epoch** timestamp. Convert it to a **Date(obj.timestamp)** object type to manipulate it as a Date.
 
 ### obj.pair
 
@@ -168,28 +168,40 @@ A _numeric float_ indicating the last returned rate for the given currency **pai
 
 An _object_ of all values returned from the last get().
 
-A full example:
+---
+
+#### A Properties Example:
 
 ```javascript
-const Forexy = require("forexy");
-const currencyCheck = new Forexy();
+const forex = new Forexy();
 
-currencyCheck
-  .get("USD/GBP") //case insensitive and in formats: "usdgbp", "usb gbp", "usd-gbp", "usd/gbp"
-  .then((result) => {
-    console.log(`${currencyCheck.pair} rate @ 
-      ${new Date(currencyCheck.timestamp)} 
-      is ${result}`);
-  })
-  .catch((err) => {
+const currency = async (pair) => {
+  try {
+    let result = await forex.get(pair).then((rate) => rate);
+    console.log(
+      `\nCurrency ${pair} rate is ${result}
+      \ttimestamp:${Date(forex.timestamp)}
+      \tpair:${forex.pair}  
+      \trate:${forex.rate}         
+      \tfulldata:${JSON.stringify(forex.fulldata)}
+      `
+    );
+  } catch (err) {
     console.error(`Error: ${err}`);
-  });
+  }
+};
+
+currency("USD NZD");
 ```
 
 output
 
 ```{r, engine='bash', count_lines}
-USDGBP rate @ Fri Dec 11 2021 09:24:36 GMT is 0.751521
+Currency USD NZD rate is 1.410037
+        timestamp:timestamp:Sun Dec 13 2021 11:39:21 GMT
+        pair:USDNZD
+        rate:1.410037
+        fulldata:{"rates":{"USDNZD":{"rate":1.410037,"timestamp":1607812505}},"code":200}
 ```
 
 ---
@@ -247,7 +259,7 @@ USDSRD,USDSRG,USDSTD,USDSTN,USDSVC,USDSYP,USDSZL,USDTHB,USDTJS,USDTMM,USDTMT,USD
 USDTZS,USDUAH,USDUGX,USDUSD,USDUYU,USDUZS,USDVAL,USDVEB,USDVEF,USDVES,USDVND,USDVUV,USDWST,USDXAF,USDXAG,USDXAU,USDXBT,USDXCD,  
 USDXDR,USDXOF,USDXPD,USDXPF,USDXPT,USDYER,USDZAR,USDZMK,USDZMW,USDZWD.
 
-Drop me a line if your currency pair isn't there, and I will look at getting it added. You can also raise an Issue in github.
+Drop me a line if your currency pair isn't there, and I will look at getting it added. You can also raise a [Github Issue](https://github.com/frankc60/forexy/issues).
 
 ## Version Changes
 
