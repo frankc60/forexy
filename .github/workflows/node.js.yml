@@ -23,10 +23,13 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-          parallel: true
       - run: npm ci
       - run: npm run build --if-present
       - run: npm test
+       uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.github_token }}
+          path-to-lcov: ${{ github.workspace }}/coverage/lcov.info
 
   finish:
     needs: build
@@ -37,4 +40,3 @@ jobs:
         with:
           github-token: ${{ secrets.github_token }}
           path-to-lcov: ${{ github.workspace }}/coverage/lcov.info
-          parallel-finished: true
