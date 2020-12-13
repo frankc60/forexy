@@ -77,7 +77,9 @@ class Forexy extends Ee {
         https
           .get(`${Forexy._url}?pairs=${d}`, (res) => {
             let data = "";
-            this.code = res.statusCode;
+
+            this.headers = res.headers;
+            this.statusCode = res.statusCode;
             this.emit("statusCode", res.statusCode);
             this.emit("headers", res.headers);
 
@@ -94,6 +96,7 @@ class Forexy extends Ee {
                 this.emit("fulldata", this.fulldata);
                 this.emit("pair", this.pair);
 
+                this.code = prs.code;
                 if (prs.message) {
                   reject(
                     `${prs.message} Supported pairs: ${prs.supportedPairs}`
@@ -175,6 +178,8 @@ class Forexy extends Ee {
         https
           .get(`${Forexy._url2}?f=${ffrom}&t=${tto}`, (res) => {
             let data = "";
+            this.headers = res.headers;
+            this.statusCode = res.statusCode;
             this.emit("statusCode", res.statusCode);
             this.emit("headers", res.headers);
 
