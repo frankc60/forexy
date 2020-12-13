@@ -62,7 +62,7 @@ const currency = async (pair) => {
     let result = await currencyCheck.get(pair).then((rate) => rate);
     console.log(`USD/GBP rate is ${result}`);
   } catch (err) {
-    return `Error: ${err}`;
+    console.error(`Error: ${err}`);
   }
 };
 
