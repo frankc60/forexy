@@ -44,6 +44,19 @@ currencyCheck
 Forexy returns a Promise, which allows you to use an **async**/**await** function, or **then().catch()**.
 
 ```javascript
+currencyCheck
+  .get("usdgbp")
+  .then((result) => {
+    console.log(`USD-GBP rate is ${result}`);
+  })
+  .catch((err) => {
+    console.error(`Error: ${err}`);
+  });
+```
+
+...which is the same as
+
+```javascript
 const currency = async (pair) => {
   try {
     let result = await currencyCheck.get(pair).then((rate) => rate);
@@ -54,19 +67,6 @@ const currency = async (pair) => {
 };
 
 currency("USD GBP");
-```
-
-...which is the same as
-
-```javascript
-currencyCheck
-  .get("usdgbp")
-  .then((result) => {
-    console.log(`USD-GBP rate is ${result}`);
-  })
-  .catch((err) => {
-    console.error(`Error: ${err}`);
-  });
 ```
 
 ## Events
