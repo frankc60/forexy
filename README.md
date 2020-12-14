@@ -10,7 +10,7 @@
 
 A **small**, **'zero dependency'** **fast** node.js package that delivers the latest forex rates for a given currency pair.
 
-_Note: V.1.1.x has the capability to use another API call, which has more functionality. This is fully backwards compatible with V.1.0.x. If you want to use this new feature now simply pass `{ v: 2}` into the Forexy class constructor declaration. for example. `const forexy = new Forexy({ v : 2})'`. This is still in BETA, but hope to have it as standard shortly._
+_Note: V.1.1.x has the capability to use another API call, which has more functionality. This is fully backwards compatible with V.1.0.x. If you want to use this new feature now simply pass `{ v: 2}` into the Forexy class constructor declaration. for example: `const forexy = new Forexy({ v : 2})`. This is still in BETA, but hope to have it as standard shortly._
 
 Using npm:
 
