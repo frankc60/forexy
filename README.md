@@ -10,7 +10,7 @@
 
 A **small**, **'zero dependency'** **fast** node.js package that delivers the latest forex rates for a given currency pair.
 
-## Installation
+_Note: V.1.1.x has the capability to use another API call, which has more functionality. This is fully backwards compatible with V.1.0.x. If you want to use this new feature now simply pass `{ v: 2}` into the Forexy class constructor declaration. for example. `const forexy = new Forexy({ v : 2})'`. This is still in BETA, but hope to have it as standard shortly._
 
 Using npm:
 
@@ -29,7 +29,7 @@ The currency pair are case insensitive and can be split using: a space, kept tog
 ```javascript
 const Forexy = require("forexy");
 
-const currencyCheck = new Forexy();
+const currencyCheck = new Forexy({ v: 2 });
 
 currencyCheck
   .get("USD/GBP") //case insensitive and in formats: "usdgbp", "usb gbp", "usd-gbp", "usd/gbp"
@@ -175,7 +175,7 @@ An _object_ of all values returned from the last get().
 #### A Properties Example:
 
 ```javascript
-const forex = new Forexy();
+const forex = new Forexy({ v: 2 });
 
 const currency = async (pair) => {
   try {
