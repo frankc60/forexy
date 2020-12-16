@@ -10,8 +10,6 @@
 
 A **small**, **'zero dependency'** **fast** node.js package that delivers the latest forex rates for a given currency pair.
 
-_Note: V.1.1.x has the capability to use another API call, which has more functionality. This is fully backwards compatible with V.1.0.x. If you want to use this new feature now simply pass `{ v: 2}` into the Forexy class constructor declaration. for example: `const forexy = new Forexy({ v : 2})`. This is still in BETA, but hope to have it as standard shortly._
-
 Using npm:
 
 ```shell
@@ -29,7 +27,7 @@ The currency pair are case insensitive and can be split using: a space, kept tog
 ```javascript
 const Forexy = require("forexy");
 
-const currencyCheck = new Forexy({ v: 2 });
+const currencyCheck = new Forexy();
 
 currencyCheck
   .get("USD/GBP") //case insensitive and in formats: "usdgbp", "usb gbp", "usd-gbp", "usd/gbp"
@@ -175,7 +173,7 @@ An _object_ of all values returned from the last get().
 #### A Properties Example:
 
 ```javascript
-const forex = new Forexy({ v: 2 });
+const forex = new Forexy();
 
 const currency = async (pair) => {
   try {
@@ -270,4 +268,10 @@ Drop me a line if your currency pair isn't there, and I will look at getting it 
 - 1.1.x - Setting up a Custom API, with the JSON customised for Forexy. Caching including to allow more traffic. Backwards
   compatible with v.1.0.x. A larger number of currency pair values available. New functionality to be added - coming very soon !
 
-  BETA access is available for v.1.1.x - call the Forexy constructor method with the object values: { v:2 }, for example: `const currencyCheck = new Forexy({ v: 2 });`. When you call the get() method the **new** API call will be used and return a slightly different object, with different properties. It is planned to make this new functionality available soon and have it fully backwards compatible with v.1.0.x.
+- 2.0.x - Using the new Custom API under the hood, which is faster, allows for more hits and also returns better JSON data. Everything has remained backwards compatible.
+  To Add new Properties and Events shortly.
+  _Note: To use version 1.0.x API, call the contructor with the following object: v:2. for example:_
+
+```javascript
+const forex = new Forexy({ v: 1 }); //use version 1.0 API.
+```
