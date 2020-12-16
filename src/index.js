@@ -21,7 +21,7 @@ class Forexy extends Ee {
   constructor(args = {}) {
     super();
 
-    this.v = args.v || 1;
+    this.v = args.v || 2;
     this.mockData = args.mock || false;
     this.timestamp = "";
     this.pair = "";

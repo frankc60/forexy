@@ -11,7 +11,7 @@ beforeAll(() => {
       function (err, stdout, stderr) {
         if (err || stderr) reject(err, stderr);
         else {
-          console.log("minification complete. Now run tests on minified code.");
+          //  console.log("minification complete. Now run tests on minified code.");
 
           resolve(stdout);
         }
@@ -71,10 +71,10 @@ describe("v.1.1.x Tests", () => {
   });
 });
 //******************************************************************************** */
-describe("Forexy() v.1.0.x", () => {
-  test("get real data, mock=false. v.1.0", () => {
+describe("Forexy( { v : 2 }) = v.1.1.x", () => {
+  test("get real data, mock=false. v.1.1", () => {
     const b = new Forexy({ mock: false });
-    expect(b.v).toBe(1);
+    expect(b.v).toBe(2);
 
     // console.log(`b.mockData: ${b.mockData}`);
     expect(b.mockData).toBe(false);
@@ -93,18 +93,20 @@ describe("Forexy() v.1.0.x", () => {
       });
   });
 
-  test("Default value, mockdata to be false", () => {
-    const a = new Forexy();
+  test("V.1.0 , mockdata to be false", () => {
+    const a = new Forexy({ v: 1 });
 
+    expect(a.v).toBe(1);
     expect(a.mockData).toBe(false);
     //  console.log(`mockData: ${a.mockData}`);
     //const expected = { d: dnow.getDate(), m: dnow.getMonth() + 1 };
     // console.log(a);
     //expect(a).toMatchObject(expected);
   });
-  test("query GBPUSD, mockdata = true", () => {
-    const b = new Forexy({ mock: true });
+  test("V.1.0.x query GBPUSD, mockdata = true", () => {
+    const b = new Forexy({ v: 1, mock: true });
 
+    expect(b.v).toBe(1);
     // console.log(`b.mockData: ${b.mockData}`);
     expect(b.mockData).toBe(true);
     //const expected = { d: dnow.getDate(), m: dnow.getMonth() + 1 };
@@ -112,8 +114,8 @@ describe("Forexy() v.1.0.x", () => {
     //expect(a).toMatchObject(expected);
   });
 
-  test("query GBPUSD, mockdata = true", () => {
-    const b = new Forexy({ mock: true });
+  test("V.1.0.x query GBPUSD, mockdata = true", () => {
+    const b = new Forexy({ v: 1, mock: true });
 
     //   console.log(`b.mockData: ${b.mockData}`);
     expect(b.mockData).toBe(true);
@@ -125,7 +127,7 @@ describe("Forexy() v.1.0.x", () => {
   //******************************************************************************** */
 });
 
-describe("Forexy() Events", () => {
+describe("Forexy({ v: 2}) Events", () => {
   const b = new Forexy({ mock: true });
   //const dnow = new Date();
   //******************************************************************************** */
@@ -172,12 +174,12 @@ describe("Forexy() Events", () => {
       expect(w).toMatch(/not processed/g);
     } catch (err) {
       // console.log("error: " + err);
-      expect(err).toMatch(/not recognised/g);
-      expect(err).toEqual(
-        expect.stringMatching(
-          /The currency pair 'NONPAIR' was not recognised or supported.*/g
-        )
-      );
+      expect(err).toMatch(/Not Supported, error 500./g);
+      // expect(err).toEqual(
+      //   expect.stringMatching(
+      //     /The currency pair 'NONPAIR' was not recognised or supported.*/g
+      //   )
+      // );
     }
   });
 });
