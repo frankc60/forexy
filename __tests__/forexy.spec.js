@@ -93,11 +93,22 @@ describe("Forexy( { v : 2 }) = v.1.1.x", () => {
       });
   });
 
-  test("V.1.0 , mockdata to be false", () => {
+  test("V.1.0 , mockdata to be false", async () => {
     const a = new Forexy({ v: 1 });
 
     expect(a.v).toBe(1);
     expect(a.mockData).toBe(false);
+
+    const w = await a.get("usd gbp");
+
+    expect(w).toEqual(expect.any(Number));
+    expect(w).toEqual(a.rate);
+    expect(a.rate).toEqual(expect.any(Number));
+    expect(a.pair).toEqual(expect.any(String));
+    expect(a.timestamp).toEqual(expect.any(Number)); //epoch number time
+    expect(a.fulldata).toEqual(expect.any(Object));
+    expect(true).toBe(true);
+
     //  console.log(`mockData: ${a.mockData}`);
     //const expected = { d: dnow.getDate(), m: dnow.getMonth() + 1 };
     // console.log(a);
@@ -114,11 +125,22 @@ describe("Forexy( { v : 2 }) = v.1.1.x", () => {
     //expect(a).toMatchObject(expected);
   });
 
-  test("V.1.0.x query GBPUSD, mockdata = true", () => {
+  test("V.1.0.x query GBPUSD, mockdata = true", async () => {
     const b = new Forexy({ v: 1, mock: true });
 
     //   console.log(`b.mockData: ${b.mockData}`);
     expect(b.mockData).toBe(true);
+
+    const w = await b.get("usd gbp");
+
+    expect(w).toEqual(expect.any(Number));
+    expect(w).toEqual(b.rate);
+    expect(b.rate).toEqual(expect.any(Number));
+    expect(b.pair).toEqual(expect.any(String));
+    expect(b.timestamp).toEqual(expect.any(Date));
+    expect(b.fulldata).toEqual(expect.any(Object));
+    expect(true).toBe(true);
+
     //const expected = { d: dnow.getDate(), m: dnow.getMonth() + 1 };
     // console.log(a);
     //expect(a).toMatchObject(expected);
