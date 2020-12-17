@@ -39,6 +39,8 @@ currencyCheck
   });
 ```
 
+Output:
+
 ```shell
 USDGBP rate is 1.72342
 ```
