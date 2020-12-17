@@ -7,11 +7,12 @@
   "bugs": "https://github.com/frankc60/forexy/issues",
   "scripts": {
     "minifyJS": "terser ${npm_package_vars_source} --compress  passes=4  --mangle reserved=['require','exports'],toplevel=true,keep_classnames=false,module=true --keep_fnames=false  --warn --output ${npm_package_main} ",
-    "production": "npm run version:bump --silent && rm -f ${npm_package_main} && npm run minifyJS --silent && npm run version:add --silent && npm test && npm run gitstuff -- \"$(npm run version:extract --silent)\" && echo \"\n\n* now npm publish, and git push\n\n\"",
+    "production": "npm run version:bump --silent && rm -f ${npm_package_main} && npm run minifyJS --silent && npm run version:add --silent && npm test && npm run gitstuff -- \"$(npm run version:extract --silent)\" && npm run postecho",
     "version:add": "echo \"/**\\n * ${npm_package_name} v.$(npm run version:extract --silent)\\n * ©$(date '+%Y') ${npm_package_license}\\n * ${npm_package_vars_email} \\n * ${npm_package_repository_url}\\n * Build time: $(date '+%d-%b-%Y %H:%M:%S')\\n */\\n$(cat ${npm_package_main})\" > ${npm_package_main}",
     "version:bump": "npm version patch --no-git-tag-version --silent",
     "version:extract": "cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]'",
     "gitstuff": "git add . && git commit -m",
+    "postecho": "@echo \"\n-------------------\n* now run:\n  > npm publish\n  > git push\n\n\"",
     "testcmd": "npm run minifyJS && npm test",
     "test": "jest --runInBand --coverage"
   },
