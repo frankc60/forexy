@@ -22,7 +22,7 @@ To retrieve the latest forex rates for USD/GBP (_US dollar to Great British Poun
 
 The currency pair are case insensitive and can be split using: a space, kept together, a forward slash /, or a dash -
 
-[![See Demo on runkit](https://badge.runkitcdn.com/forexy.svg)](https://runkit.com/embed/7ez52pfsoc6p)
+[![See Demo on runkit](https://badge.runkitcdn.com/forexy.svg)](https://runkit.com/embed/0nzut71u8mzo)
 
 ```javascript
 const Forexy = require("forexy");
