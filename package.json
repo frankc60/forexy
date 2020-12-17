@@ -12,7 +12,7 @@
     "version:bump": "npm version patch --no-git-tag-version --silent",
     "version:extract": "cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]'",
     "gitstuff": "git add . && git commit -m",
-    "postecho": "@echo \"\n-------------------\n* now run:\n  > npm publish\n  > git push\n\n\"",
+    "postecho": "echo \"\n-------------------\n* now run:\n  > npm publish\n  > git push\n\n\"",
     "testcmd": "npm run minifyJS && npm test",
     "test": "jest --runInBand --coverage"
   },
