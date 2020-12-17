@@ -1,6 +1,6 @@
 {
   "name": "forexy",
-  "version": "2.0.11",
+  "version": "2.0.12",
   "description": "retrieve forex results fast",
   "main": "forexy.min.js",
   "repository": "https://github.com/frankc60/forexy",

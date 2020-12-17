@@ -32,11 +32,15 @@ const currencyCheck = new Forexy();
 currencyCheck
   .get("USD/GBP") //case insensitive and in formats: "usdgbp", "usb gbp", "usd-gbp", "usd/gbp"
   .then((result) => {
-    console.log(`USD/GBP rate is ${result}`);
+    \tpair: console.log(`${currencyCheck.pair} rate is ${result}`);
   })
   .catch((err) => {
     console.error(`Error: ${err}`);
   });
+```
+
+```shell
+USDGBP rate is 1.72342
 ```
 
 ## Promise
@@ -148,7 +152,7 @@ currencyCheck.on("stream", (data) => {
 });
 ```
 
-## Properties v.1.0
+## Properties
 
 Forexy has constructor properties (prototypes), which get set during the last successful calling of the get() method.
 
@@ -244,22 +248,9 @@ currencyCheck
   });
 ```
 
-### Supported Currency Pairs. v.1.0
+### Supported Currency Pairs
 
-AUDUSD,EURGBP,EURUSD,GBPUSD,NZDUSD,USDAED,USDAFN,USDALL,USDAMD,USDANG,USDAOA,USDARS,USDATS,USDAUD,USDAWG,USDAZM,USDAZN,USDBAM,  
-USDBBD,USDBDT,USDBEF,USDBGN,USDBHD,USDBIF,USDBMD,USDBND,USDBOB,USDBRL,USDBSD,USDBTN,USDBWP,USDBYN,USDBYR,USDBZD,USDCAD,USDCDF,  
-USDCHF,USDCLP,USDCNH,USDCNY,USDCOP,USDCRC,USDCUC,USDCUP,USDCVE,USDCYP,USDCZK,USDDEM,USDDJF,USDDKK,USDDOP,USDDZD,USDEEK,USDEGP,  
-USDERN,USDESP,USDETB,USDEUR,USDFIM,USDFJD,USDFKP,USDFRF,USDGBP,USDGEL,USDGGP,USDGHC,USDGHS,USDGIP,USDGMD,USDGNF,USDGRD,USDGTQ,  
-USDGYD,USDHKD,USDHNL,USDHRK,USDHTG,USDHUF,USDIDR,USDIEP,USDILS,USDIMP,USDINR,USDIQD,USDIRR,USDISK,USDITL,USDJEP,USDJMD,USDJOD,  
-USDJPY,USDKES,USDKGS,USDKHR,USDKMF,USDKPW,USDKRW,USDKWD,USDKYD,USDKZT,USDLAK,USDLBP,USDLKR,USDLRD,USDLSL,USDLTL,USDLUF,USDLVL,  
-USDLYD,USDMAD,USDMDL,USDMGA,USDMGF,USDMKD,USDMMK,USDMNT,USDMOP,USDMRO,USDMRU,USDMTL,USDMUR,USDMVR,USDMWK,USDMXN,USDMYR,USDMZM,  
-USDMZN,USDNAD,USDNGN,USDNIO,USDNLG,USDNOK,USDNPR,USDNZD,USDOMR,USDPAB,USDPEN,USDPGK,USDPHP,USDPKR,USDPLN,USDPTE,USDPYG,USDQAR,  
-USDROL,USDRON,USDRSD,USDRUB,USDRWF,USDSAR,USDSBD,USDSCR,USDSDD,USDSDG,USDSEK,USDSGD,USDSHP,USDSIT,USDSKK,USDSLL,USDSOS,USDSPL,  
-USDSRD,USDSRG,USDSTD,USDSTN,USDSVC,USDSYP,USDSZL,USDTHB,USDTJS,USDTMM,USDTMT,USDTND,USDTOP,USDTRL,USDTRY,USDTTD,USDTVD,USDTWD,  
-USDTZS,USDUAH,USDUGX,USDUSD,USDUYU,USDUZS,USDVAL,USDVEB,USDVEF,USDVES,USDVND,USDVUV,USDWST,USDXAF,USDXAG,USDXAU,USDXBT,USDXCD,  
-USDXDR,USDXOF,USDXPD,USDXPF,USDXPT,USDYER,USDZAR,USDZMK,USDZMW,USDZWD.
-
-Drop me a line if your currency pair isn't there, and I will look at getting it added. You can also raise a [Github Issue](https://github.com/frankc60/forexy/issues).
+Since the introduction of version 1.1 I haven't found a currency that is not covered. Drop me a line if your currency pair isn't there, and I will look at getting it added. You can also raise a [Github Issue](https://github.com/frankc60/forexy/issues).
 
 ## Version Changes
 
