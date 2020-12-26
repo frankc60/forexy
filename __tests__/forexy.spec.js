@@ -21,6 +21,7 @@ beforeAll(() => {
 });
 //******************************************************************************** */
 describe("v.1.0 Tests", () => {
+  /*
   test("get real data - USD GBP", async () => {
     const a = new Forexy({ v: 1 });
 
@@ -37,7 +38,7 @@ describe("v.1.0 Tests", () => {
     expect(a.fulldata).toEqual(expect.any(Object));
     expect(true).toBe(true);
   });
-
+*/
   test("V.1.0.x query GBPUSD, mockdata = true", () => {
     const b = new Forexy({ v: 1, mock: true });
 
